@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma de Aulas da Monitoria</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-page: #0d1117;
+            --bg-card: #161b22;
+            --bg-tile: #21262d;
+            --bg-tile-hover: #262c36;
+            --border-color: #30363d;
+            
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            
+            --accent-blue: #58a6ff;
+            --accent-light-blue: #79c0ff;
+            --accent-green: #7ee787;
+            --accent-red: #ff7b72;
+            --accent-yellow: #e3b341;
+            --accent-purple: #d2a8ff;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            margin: 0;
+            padding: 0;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tag-module {
+            color: var(--accent-yellow);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: inline-block;
+            background: rgba(227, 179, 65, 0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            color: var(--accent-blue);
+            margin: 0 0 15px 0;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .week-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+        }
+
+        .week-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-blue);
+        }
+
+        .week-card::before {
+            content: '● ● ●'; 
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--border-color);
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .week-title {
+            font-size: 22px;
+            color: var(--text-main);
+            font-weight: 600;
+            margin: 0 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .week-title i {
+            color: var(--accent-blue);
+            font-size: 18px;
+        }
+
+        .day-event {
+            display: flex;
+            gap: 16px;
+            background-color: var(--bg-tile);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: background-color 0.2s;
+        }
+
+        .day-event:last-child {
+            margin-bottom: 0;
+        }
+
+        .day-event:hover {
+            background-color: var(--bg-tile-hover);
+        }
+
+        .type-teorica { border-left-color: var(--accent-light-blue); }
+        .type-teorica .event-type-label { color: var(--accent-light-blue); }
+
+        .type-pratica { border-left-color: var(--accent-green); }
+        .type-pratica .event-type-label { color: var(--accent-green); }
+
+        .type-prova { border-left-color: var(--accent-red); }
+        .type-prova .event-type-label { color: var(--accent-red); }
+
+        .date-badge {
+            background-color: var(--bg-page);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px;
+            min-width: 55px;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .date-day {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .date-month {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .event-details {
+            flex-grow: 1;
+        }
+
+        .event-type-label {
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .event-title {
+            font-size: 15px;
+            color: var(--text-main);
+            margin: 0 0 6px 0;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .event-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .legend-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .filter-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--text-muted);
+            color: var(--text-main);
+        }
+
+        .filter-btn.active {
+            background: var(--bg-tile);
+            border-color: var(--accent-blue);
+            color: var(--text-main);
+        }
+
+        .day-event.hidden {
+            display: none !important;
+        }
+
+        .today-highlight {
+            border-color: var(--accent-yellow) !important;
+            box-shadow: 0 0 15px rgba(227, 179, 65, 0.15);
+            position: relative;
+        }
+
+        .today-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--accent-yellow);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .final-footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+
+        .inst-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .unicesumar-logo {
+            height: 50px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .info-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 6px;
+            transition: color 0.2s;
+        }
+
+        .info-link:hover {
+            color: var(--accent-blue);
+            text-decoration: underline;
+        }
+
+        .info-link i {
+            width: 20px;
+            color: var(--accent-blue);
+        }
+
+        @media (max-width: 768px) {
+            .calendar-grid {
+                grid-template-columns: 1fr;
+            }
+            .final-footer {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .page-header h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header class="page-header">
+            <div class="tag-module">&lt;/MÓDULO 51.2026&gt;</div>
+            <h1>Cronograma de Aulas da Monitoria</h1>
+            <p>Algoritmos e Lógica de Programação</p>
+        </header>
+
+        <div class="legend-container" id="filterContainer">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fa-solid fa-layer-group"></i> Todas
+            </button>
+            <button class="filter-btn" data-filter="type-teorica">
+                <div class="legend-dot" style="background-color: var(--accent-light-blue);"></div>
+                Conceitual
+            </button>
+            <button class="filter-btn" data-filter="type-pratica">
+                <div class="legend-dot" style="background-color: var(--accent-green);"></div>
+                Prática
+            </button>
+            <button class="filter-btn" data-filter="type-prova">
+                <div class="legend-dot" style="background-color: var(--accent-red);"></div>
+                Provas
+            </button>
+        </div>
+
+        <main class="calendar-grid">
+
+            <div class="week-card">
+                <h3 class="week-title"><i class="fa-regular fa-calendar-check"></i> Semana 1</h3>
+                
+                <div class="day-event type-teorica">
+                    <div class="date-badge">
+                        <span class="date-day">11</span>
+                        <span class="date-month">Mar</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
+                        <h4 class="event-title">Conceitos Básicos</h4>
+                        <p class="event-desc">Apresentação de slides e explicação teórica.</p>
+                    </div>
+                </div>
+
+                <div class="day-event type-pratica">
+                    <div class="date-badge">
+                        <span class="date-day">12</span>
+                        <span class="date-month">Mar</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-laptop-code"></i> Prática</div>
+                        <h4 class="event-title">Conceitos Básicos</h4>
+                        <p class="event-desc">Atividades práticas de programação utilizando os conceitos estudados.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="week-card">
+                <h3 class="week-title"><i class="fa-regular fa-calendar-check"></i> Semana 2</h3>
+                
+                <div class="day-event type-teorica">
+                    <div class="date-badge">
+                        <span class="date-day">18</span>
+                        <span class="date-month">Mar</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
+                        <h4 class="event-title">Estruturas Condicionais e de Repetição</h4>
+                        <p class="event-desc">Apresentação de slides e explicação teórica.</p>
+                    </div>
+                </div>
+
+                <div class="day-event type-pratica">
+                    <div class="date-badge">
+                        <span class="date-day">19</span>
+                        <span class="date-month">Mar</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-laptop-code"></i> Prática</div>
+                        <h4 class="event-title">Estruturas Condicionais e de Repetição</h4>
+                        <p class="event-desc">Atividades práticas utilizando todos os conceitos até o momento.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="week-card" style="border-color: #ff7b7233; background-color: #1a1515;">
+                <h3 class="week-title" style="color: var(--accent-red);"><i class="fa-solid fa-triangle-exclamation"></i> Semana de Provas</h3>
+                
+                <div class="day-event type-prova">
+                    <div class="date-badge">
+                        <span class="date-day">25</span>
+                        <span class="date-month">Mar</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-file-signature"></i> Pausa</div>
+                        <h4 class="event-title">Semana de Provas</h4>
+                        <p class="event-desc">Não há aula agendada.</p>
+                    </div>
+                </div>
+
+                <div class="day-event type-prova">
+                    <div class="date-badge">
+                        <span class="date-day">26</span>
+                        <span class="date-month">Mar</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-file-signature"></i> Pausa</div>
+                        <h4 class="event-title">Semana de Provas</h4>
+                        <p class="event-desc">Não há aula agendada.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="week-card">
+                <h3 class="week-title"><i class="fa-regular fa-calendar-check"></i> Semana 3</h3>
+                
+                <div class="day-event type-teorica">
+                    <div class="date-badge">
+                        <span class="date-day">01</span>
+                        <span class="date-month">Abr</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
+                        <h4 class="event-title">Estruturas Homogêneas</h4>
+                        <p class="event-desc">Apresentação de slides e explicação teórica.</p>
+                    </div>
+                </div>
+
+                <div class="day-event type-pratica">
+                    <div class="date-badge">
+                        <span class="date-day">02</span>
+                        <span class="date-month">Abr</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-laptop-code"></i> Prática</div>
+                        <h4 class="event-title">Estruturas Homogêneas</h4>
+                        <p class="event-desc">Atividades práticas de programação.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="week-card">
+                <h3 class="week-title"><i class="fa-regular fa-calendar-check"></i> Semana 4</h3>
+                
+                <div class="day-event type-teorica">
+                    <div class="date-badge">
+                        <span class="date-day">08</span>
+                        <span class="date-month">Abr</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
+                        <h4 class="event-title">Estruturas Heterogêneas</h4>
+                        <p class="event-desc">Apresentação de slides e explicação teórica.</p>
+                    </div>
+                </div>
+
+                <div class="day-event type-pratica">
+                    <div class="date-badge">
+                        <span class="date-day">09</span>
+                        <span class="date-month">Abr</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-laptop-code"></i> Prática</div>
+                        <h4 class="event-title">Estruturas Heterogêneas</h4>
+                        <p class="event-desc">Atividades práticas de programação.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="week-card">
+                <h3 class="week-title"><i class="fa-regular fa-calendar-check"></i> Semana 5</h3>
+                
+                <div class="day-event type-teorica">
+                    <div class="date-badge">
+                        <span class="date-day">15</span>
+                        <span class="date-month">Abr</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
+                        <h4 class="event-title">Sub-Rotinas e Ponteiros</h4>
+                        <p class="event-desc">Apresentação de slides e explicação teórica.</p>
+                    </div>
+                </div>
+
+                <div class="day-event type-pratica">
+                    <div class="date-badge">
+                        <span class="date-day">16</span>
+                        <span class="date-month">Abr</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-laptop-code"></i> Prática</div>
+                        <h4 class="event-title">Sub-Rotinas e Ponteiros</h4>
+                        <p class="event-desc">Atividades práticas de programação.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="week-card">
+                <h3 class="week-title"><i class="fa-regular fa-calendar-check"></i> Semana 6</h3>
+                
+                <div class="day-event type-teorica">
+                    <div class="date-badge">
+                        <span class="date-day">22</span>
+                        <span class="date-month">Abr</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
+                        <h4 class="event-title">Manipulação de Arquivos e Revisão</h4>
+                        <p class="event-desc">Apresentação de slides e explicação teórica.</p>
+                    </div>
+                </div>
+
+                <div class="day-event type-pratica">
+                    <div class="date-badge">
+                        <span class="date-day">23</span>
+                        <span class="date-month">Abr</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-laptop-code"></i> Prática</div>
+                        <h4 class="event-title">Manipulação de Arquivos e Revisão</h4>
+                        <p class="event-desc">Atividades práticas de programação e fechamento.</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="final-footer">
+            <div class="inst-info">
+                <img src="https://sistemasead.unicesumar.edu.br/portal/login/img/unicesumar_logo.png" class="unicesumar-logo" alt="Logo UniCesumar">
+                <div>
+                    <a href="https://www.unicesumar.edu.br/" class="info-link" target="_blank"><i class="fa-solid fa-globe"></i> Site Oficial</a>
+                    <a href="https://sites.google.com/view/programa-ampliar/in%C3%ADcio" class="info-link" target="_blank"><i class="fa-solid fa-graduation-cap"></i> Programa Ampliar</a>
+                </div>
+            </div>
+            
+            <div class="monitor-info">
+                <h4 style="color:var(--accent-light-blue); margin: 0 0 10px 0; font-size: 16px;">Monitor: Thiago Kusal Silva</h4>
+                <a href="https://www.linkedin.com/in/tkusal/" class="info-link" target="_blank"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/tkusal</a>
+                <a href="https://tkusal.com.br" class="info-link" target="_blank"><i class="fa-solid fa-link"></i> tkusal.com.br</a>
+                <a href="https://www.youtube.com/@thiagokusal" class="info-link" target="_blank"><i class="fa-brands fa-youtube"></i> @thiagokusal</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const events = document.querySelectorAll('.day-event');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    events.forEach(event => {
+                        if (filterValue === 'all') {
+                            event.classList.remove('hidden');
+                        } else {
+                            if (event.classList.contains(filterValue)) {
+                                event.classList.remove('hidden');
+                            } else {
+                                event.classList.add('hidden');
+                            }
+                        }
+                    });
+                });
+            });
+
+            const today = new Date();
+            const currentDay = today.getDate();
+            const currentMonth = today.getMonth();
+            
+            const monthMap = { 'MAR': 2, 'ABR': 3 };
+
+            events.forEach(event => {
+                const dayNode = event.querySelector('.date-day');
+                const monthNode = event.querySelector('.date-month');
+                
+                if (dayNode && monthNode) {
+                    const eventDay = parseInt(dayNode.innerText, 10);
+                    const eventMonthText = monthNode.innerText.trim().toUpperCase();
+                    const eventMonth = monthMap[eventMonthText];
+
+                    if (eventDay === currentDay && eventMonth === currentMonth) {
+                        event.classList.add('today-highlight');
+                        
+                        const badge = document.createElement('div');
+                        badge.classList.add('today-badge');
+                        badge.innerText = 'Hoje';
+                        event.appendChild(badge);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
