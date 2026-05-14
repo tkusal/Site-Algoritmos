@@ -62,7 +62,7 @@
         }
 
         .slide-container::before {
-            content: '● ● ●'; 
+            content: '● ● ●';
             position: absolute;
             top: 15px;
             left: 20px;
@@ -95,7 +95,7 @@
 
         .content-area { display: flex; flex-direction: column; flex-grow: 1; justify-content: center; width: 100%; }
         .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-        
+
         .tile {
             background-color: #21262d;
             border: 1px solid #30363d;
@@ -356,7 +356,7 @@
 
         .tool-btn:hover { color: #58a6ff; background: rgba(88, 166, 255, 0.1); }
         .tool-btn.active { color: #0d1117; background: #58a6ff; box-shadow: 0 0 10px rgba(88, 166, 255, 0.5); }
-        
+
         .color-dot {
             width: 20px;
             height: 20px;
@@ -467,7 +467,7 @@
     <button id="nextBtn" class="nav-btn" onclick="changeSlide(1)">❯</button>
 
     <div class="slide-wrapper">
-        
+
         <!-- Slide 1: Capa -->
         <div class="slide-container active">
             <div class="content-area" style="text-align: center;">
@@ -480,8 +480,8 @@
                     <div class="tile"><span class="highlight-py">Python</span></div>
                 </div>
                 <div class="home-credits">
-                    Produzido por <a href="https://www.linkedin.com/in/tkusal/" target="_blank">Thiago Kusal</a> | 
-                    <a href="https://sites.google.com/view/programa-ampliar/in%C3%ADcio" target="_blank">Projeto Ampliar - UniCesumar</a> | 
+                    Produzido por <a href="https://www.linkedin.com/in/tkusal/" target="_blank">Thiago Kusal</a> |
+                    <a href="https://sites.google.com/view/programa-ampliar/in%C3%ADcio" target="_blank">Projeto Ampliar - UniCesumar</a> |
                     <a href="https://github.com/tkusal/Projeto-Ampliar-Unicesumar-51-2026" target="_blank">GitHub da monitoria</a>
                 </div>
             </div>
@@ -514,10 +514,10 @@
                     </div>
                 </div>
             </div>
-            <div class="progress-bar" style="width: 12%;"></div>
+            <div class="progress-bar" style="width: 13%;"></div>
         </div>
 
-        <!-- Slide 3: Representações (REMODELADO COM SVG) -->
+        <!-- Slide 3: Representações -->
         <div class="slide-container">
             <h2 class="slide-title">Tipos de Representação</h2>
             <div class="content-area">
@@ -674,7 +674,70 @@
             <div class="progress-bar" style="width: 46%;"></div>
         </div>
 
-        <!-- Slide 8: Operadores Lógicos -->
+        <!-- Slide 8: Operadores Relacionais (NOVO) -->
+        <div class="slide-container">
+            <h2 class="slide-title">Operadores Relacionais</h2>
+            <div class="content-area">
+                <p style="text-align: center; margin-bottom: 25px; color: #8b949e;">Comparam dois valores e retornam um valor <b style="color: #58a6ff;">Lógico</b> (Verdadeiro ou Falso).</p>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                    <!-- Maior -->
+                    <div class="tile">
+                        <h3>></h3>
+                        <p style="font-size:14px; font-weight: bold; color: #58a6ff;">Maior que</p>
+                        <p style="font-size:12px; color: #8b949e; margin-top: 5px;">5 > 3 <i class="fa-solid fa-arrow-right" style="margin: 0 5px; font-size: 10px;"></i> <span class="result-true">V</span></p>
+                    </div>
+
+                    <!-- Menor -->
+                    <div class="tile">
+                        <h3>&lt;</h3>
+                        <p style="font-size:14px; font-weight: bold; color: #58a6ff;">Menor que</p>
+                        <p style="font-size:12px; color: #8b949e; margin-top: 5px;">5 &lt; 3 <i class="fa-solid fa-arrow-right" style="margin: 0 5px; font-size: 10px;"></i> <span class="result-false">F</span></p>
+                    </div>
+
+                    <!-- Igualdade -->
+                    <div class="tile" style="border-color: rgba(88, 166, 255, 0.3);">
+                        <h3 style="margin-bottom: 5px;">== <span style="font-size: 16px; color: #8b949e; font-weight: normal;">ou</span> =</h3>
+                        <p style="font-size:14px; font-weight: bold; color: #58a6ff;">Igualdade</p>
+                        <div style="font-size:12px; color: #8b949e; margin-top: 8px; text-align: left; padding-left: 20px;">
+                            <span class="highlight-port">Port:</span> <code>=</code><br>
+                            <span class="highlight-c">C/Py:</span> <code>==</code>
+                        </div>
+                    </div>
+
+                    <!-- Maior ou Igual -->
+                    <div class="tile">
+                        <h3>>=</h3>
+                        <p style="font-size:14px; font-weight: bold; color: #58a6ff;">Maior ou igual</p>
+                        <p style="font-size:12px; color: #8b949e; margin-top: 5px;">5 >= 5 <i class="fa-solid fa-arrow-right" style="margin: 0 5px; font-size: 10px;"></i> <span class="result-true">V</span></p>
+                    </div>
+
+                    <!-- Menor ou Igual -->
+                    <div class="tile">
+                        <h3>&lt;=</h3>
+                        <p style="font-size:14px; font-weight: bold; color: #58a6ff;">Menor ou igual</p>
+                        <p style="font-size:12px; color: #8b949e; margin-top: 5px;">2 &lt;= 8 <i class="fa-solid fa-arrow-right" style="margin: 0 5px; font-size: 10px;"></i> <span class="result-true">V</span></p>
+                    </div>
+
+                    <!-- Diferença -->
+                    <div class="tile" style="border-color: rgba(255, 123, 114, 0.3);">
+                        <h3 style="margin-bottom: 5px;">!= <span style="font-size: 16px; color: #8b949e; font-weight: normal;">ou</span> &lt;&gt;</h3>
+                        <p style="font-size:14px; font-weight: bold; color: #ff7b72;">Diferença</p>
+                        <div style="font-size:12px; color: #8b949e; margin-top: 8px; text-align: left; padding-left: 20px;">
+                            <span class="highlight-port">Port:</span> <code>&lt;&gt;</code><br>
+                            <span class="highlight-c">C/Py:</span> <code>!=</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="disclaimer-box" style="margin-top: 25px;">
+                    <strong>Atenção:</strong> Na maioria das linguagens de programação, um único sinal de igual (<code>=</code>) é usado para <b>atribuição</b> (receber um valor), enquanto dois sinais (<code>==</code>) são usados para <b>comparação</b>. O Portugol é uma exceção a essa regra!
+                </div>
+            </div>
+            <div class="progress-bar" style="width: 53%;"></div>
+        </div>
+
+        <!-- Slide 9: Operadores Lógicos -->
         <div class="slide-container">
             <h2 class="slide-title">Operadores Lógicos</h2>
             <div class="content-area">
@@ -724,10 +787,10 @@
                     </div>
                 </div>
             </div>
-            <div class="progress-bar" style="width: 53%;"></div>
+            <div class="progress-bar" style="width: 60%;"></div>
         </div>
 
-        <!-- Slide 9: Portugol -->
+        <!-- Slide 10: Portugol -->
         <div class="slide-container">
             <h2 class="slide-title">Estrutura Básica: Portugol</h2>
             <div class="content-area">
@@ -760,10 +823,10 @@
                     <strong>Nota:</strong> O Portugol é uma linguagem <b>estritamente didática</b> (pseudocódigo). Ela foi criada para facilitar o aprendizado da lógica e a estruturação de algoritmos em nossa língua nativa, removendo as barreiras técnicas de sintaxes comerciais para que o foco seja 100% no desenvolvimento do raciocínio lógico.
                 </div>
             </div>
-            <div class="progress-bar" style="width: 60%;"></div>
+            <div class="progress-bar" style="width: 66%;"></div>
         </div>
 
-        <!-- Slide 10: C -->
+        <!-- Slide 11: C -->
         <div class="slide-container">
             <h2 class="slide-title">Estrutura Básica: Linguagem C</h2>
             <div class="content-area">
@@ -797,10 +860,10 @@
                     <strong>Nota:</strong> Em algumas literaturas, pode-se encontrar a declaração <code>void main()</code> e a ausência do <code>return 0;</code>. Isso ocorre pois compiladores antigos ou específicos para sistemas embarcados permitiam esse formato. No entanto, o padrão ISO C moderno exige que a função principal retorne um inteiro (<code>int</code>) para informar o status ao sistema. Em compiladores modernos (padrão C99+), se o <code>return 0;</code> for omitido, o compilador o insere automaticamente ao final da função.
                 </div>
             </div>
-            <div class="progress-bar" style="width: 66%;"></div>
+            <div class="progress-bar" style="width: 73%;"></div>
         </div>
 
-        <!-- Slide 11: Especificadores -->
+        <!-- Slide 12: Especificadores -->
         <div class="slide-container">
             <h2 class="slide-title">Especificadores de Formato</h2>
             <div class="content-area">
@@ -814,10 +877,10 @@
                     <div class="tile"><h3>%s</h3><p>String</p></div>
                 </div>
             </div>
-            <div class="progress-bar" style="width: 73%;"></div>
+            <div class="progress-bar" style="width: 80%;"></div>
         </div>
 
-        <!-- Slide 12: Python (CENTRALIZADO) -->
+        <!-- Slide 13: Python -->
         <div class="slide-container">
             <h2 class="slide-title">Estrutura Básica: Python</h2>
             <div class="content-area">
@@ -844,10 +907,10 @@ resultado = n1 + n2
                     <strong>Importante:</strong> Embora o Python utilize <b>tipagem dinâmica</b>, ele possui <b>tipagem forte</b>. Para operações matemáticas com entradas do usuário, é obrigatório realizar o <b>Casting</b>, caso contrário o operador <code>+</code> apenas juntaria os textos.
                 </div>
             </div>
-            <div class="progress-bar" style="width: 80%;"></div>
-        </div>        
+            <div class="progress-bar" style="width: 86%;"></div>
+        </div>
 
-        <!-- Slide 13: Comparativo -->
+        <!-- Slide 14: Comparativo -->
         <div class="slide-container">
             <h2 class="slide-title">Comparativo entre Linguagens</h2>
             <div class="content-area">
@@ -863,10 +926,10 @@ resultado = n1 + n2
                     </tbody>
                 </table>
             </div>
-            <div class="progress-bar" style="width: 94%;"></div>
+            <div class="progress-bar" style="width: 93%;"></div>
         </div>
 
-        <!-- Slide 14: Indicações e Contatos -->
+        <!-- Slide 15: Indicações e Contatos -->
         <div class="slide-container">
             <h2 class="slide-title">Referências</h2>
             <div class="content-area">
@@ -936,12 +999,12 @@ resultado = n1 + n2
         function scaleSlides() {
             const containerWidth = 1280, containerHeight = 720;
             const windowWidth = window.innerWidth, windowHeight = window.innerHeight;
-            const scale = Math.min(windowWidth / containerWidth, windowHeight / containerHeight) * 0.95; 
+            const scale = Math.min(windowWidth / containerWidth, windowHeight / containerHeight) * 0.95;
             slides.forEach(slide => slide.style.transform = `translate(-50%, -50%) scale(${scale})`);
         }
 
         document.addEventListener('keydown', (e) => {
-            if (drawingActive) return; 
+            if (drawingActive) return;
             if (e.key === 'ArrowRight' || e.key === ' ') changeSlide(1);
             if (e.key === 'ArrowLeft') changeSlide(-1);
         });
@@ -1013,7 +1076,7 @@ resultado = n1 + n2
 
             const displayArea = document.getElementById('exampleDisplay');
             displayArea.style.opacity = '0';
-            
+
             setTimeout(() => {
                 const data = exampleData[type];
                 document.getElementById('exampleTitle').innerText = data.title;

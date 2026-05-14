@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cronograma de Aulas da Monitoria</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <style>
         :root {
             --bg-page: #0d1117;
@@ -18,10 +18,10 @@
             --bg-tile: #21262d;
             --bg-tile-hover: #262c36;
             --border-color: #30363d;
-            
+
             --text-main: #c9d1d9;
             --text-muted: #8b949e;
-            
+
             --accent-blue: #58a6ff;
             --accent-light-blue: #79c0ff;
             --accent-green: #7ee787;
@@ -103,7 +103,7 @@
         }
 
         .week-card::before {
-            content: '● ● ●'; 
+            content: '● ● ●';
             position: absolute;
             top: 15px;
             right: 20px;
@@ -301,7 +301,7 @@
             height: 50px;
             filter: brightness(0) invert(1);
         }
-        
+
         .info-link {
             color: var(--text-muted);
             text-decoration: none;
@@ -338,9 +338,9 @@
 <body>
 
     <div class="container">
-        
+
         <header class="page-header">
-            <div class="tag-module">&lt;/MÓDULO 51.2026&gt;</div>
+            <div class="tag-module">&lt;/MÓDULO 52.2026&gt;</div>
             <h1>Cronograma de Aulas da Monitoria</h1>
             <p>Algoritmos e Lógica de Programação</p>
         </header>
@@ -367,196 +367,224 @@
 
             <div class="week-card">
                 <h3 class="week-title"><i class="fa-regular fa-calendar-check"></i> Semana 1</h3>
-                
+
                 <div class="day-event type-teorica">
                     <div class="date-badge">
-                        <span class="date-day">11</span>
-                        <span class="date-month">Mar</span>
+                        <span class="date-day">13</span>
+                        <span class="date-month">Mai</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
+                        <h4 class="event-title">Recepção e Apresentação</h4>
+                        <p class="event-desc">Apresentação de slides, funcionamento da monitoria e boas-vindas.</p>
+                    </div>
+                </div>
+
+                <div class="day-event type-teorica">
+                    <div class="date-badge">
+                        <span class="date-day">14</span>
+                        <span class="date-month">Mai</span>
                     </div>
                     <div class="event-details">
                         <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
                         <h4 class="event-title">Conceitos Básicos</h4>
-                        <p class="event-desc">Apresentação de slides e explicação teórica.</p>
-                    </div>
-                </div>
-
-                <div class="day-event type-pratica">
-                    <div class="date-badge">
-                        <span class="date-day">12</span>
-                        <span class="date-month">Mar</span>
-                    </div>
-                    <div class="event-details">
-                        <div class="event-type-label"><i class="fa-solid fa-laptop-code"></i> Prática</div>
-                        <h4 class="event-title">Conceitos Básicos</h4>
-                        <p class="event-desc">Atividades práticas de programação utilizando os conceitos estudados.</p>
+                        <p class="event-desc">Explicação teórica e introdução à lógica de programação.</p>
                     </div>
                 </div>
             </div>
 
             <div class="week-card">
                 <h3 class="week-title"><i class="fa-regular fa-calendar-check"></i> Semana 2</h3>
-                
+
                 <div class="day-event type-teorica">
                     <div class="date-badge">
-                        <span class="date-day">18</span>
-                        <span class="date-month">Mar</span>
+                        <span class="date-day">20</span>
+                        <span class="date-month">Mai</span>
                     </div>
                     <div class="event-details">
                         <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
-                        <h4 class="event-title">Estruturas Condicionais e de Repetição</h4>
-                        <p class="event-desc">Apresentação de slides e explicação teórica.</p>
+                        <h4 class="event-title">Prática Básica & Estruturas Condicionais</h4>
+                        <p class="event-desc">Prática de conceitos básicos e aula conceitual de Condicionais.</p>
                     </div>
                 </div>
 
                 <div class="day-event type-pratica">
                     <div class="date-badge">
-                        <span class="date-day">19</span>
-                        <span class="date-month">Mar</span>
+                        <span class="date-day">21</span>
+                        <span class="date-month">Mai</span>
                     </div>
                     <div class="event-details">
                         <div class="event-type-label"><i class="fa-solid fa-laptop-code"></i> Prática</div>
-                        <h4 class="event-title">Estruturas Condicionais e de Repetição</h4>
-                        <p class="event-desc">Atividades práticas utilizando todos os conceitos até o momento.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="week-card" style="border-color: #ff7b7233; background-color: #1a1515;">
-                <h3 class="week-title" style="color: var(--accent-red);"><i class="fa-solid fa-triangle-exclamation"></i> Semana de Provas</h3>
-                
-                <div class="day-event type-prova">
-                    <div class="date-badge">
-                        <span class="date-day">25</span>
-                        <span class="date-month">Mar</span>
-                    </div>
-                    <div class="event-details">
-                        <div class="event-type-label"><i class="fa-solid fa-file-signature"></i> Pausa</div>
-                        <h4 class="event-title">Semana de Provas</h4>
-                        <p class="event-desc">Não há aula agendada.</p>
-                    </div>
-                </div>
-
-                <div class="day-event type-prova">
-                    <div class="date-badge">
-                        <span class="date-day">26</span>
-                        <span class="date-month">Mar</span>
-                    </div>
-                    <div class="event-details">
-                        <div class="event-type-label"><i class="fa-solid fa-file-signature"></i> Pausa</div>
-                        <h4 class="event-title">Semana de Provas</h4>
-                        <p class="event-desc">Não há aula agendada.</p>
+                        <h4 class="event-title">Estruturas Condicionais</h4>
+                        <p class="event-desc">Atividades práticas e exercícios de programação com condições.</p>
                     </div>
                 </div>
             </div>
 
             <div class="week-card">
                 <h3 class="week-title"><i class="fa-regular fa-calendar-check"></i> Semana 3</h3>
-                
+
                 <div class="day-event type-teorica">
                     <div class="date-badge">
-                        <span class="date-day">01</span>
-                        <span class="date-month">Abr</span>
+                        <span class="date-day">27</span>
+                        <span class="date-month">Mai</span>
                     </div>
                     <div class="event-details">
                         <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
-                        <h4 class="event-title">Estruturas Homogêneas</h4>
-                        <p class="event-desc">Apresentação de slides e explicação teórica.</p>
+                        <h4 class="event-title">Estruturas de Repetição</h4>
+                        <p class="event-desc">Apresentação de slides e explicação teórica de laços de repetição.</p>
                     </div>
                 </div>
 
                 <div class="day-event type-pratica">
                     <div class="date-badge">
-                        <span class="date-day">02</span>
-                        <span class="date-month">Abr</span>
+                        <span class="date-day">28</span>
+                        <span class="date-month">Mai</span>
                     </div>
                     <div class="event-details">
                         <div class="event-type-label"><i class="fa-solid fa-laptop-code"></i> Prática</div>
-                        <h4 class="event-title">Estruturas Homogêneas</h4>
-                        <p class="event-desc">Atividades práticas de programação.</p>
+                        <h4 class="event-title">Estruturas de Repetição</h4>
+                        <p class="event-desc">Atividades práticas focadas em laços de repetição.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="week-card">
-                <h3 class="week-title"><i class="fa-regular fa-calendar-check"></i> Semana 4</h3>
-                
-                <div class="day-event type-teorica">
+            <div class="week-card" style="border-color: #ff7b7233; background-color: #1a1515;">
+                <h3 class="week-title" style="color: var(--accent-red);"><i class="fa-solid fa-triangle-exclamation"></i> Semana de Provas</h3>
+
+                <div class="day-event type-prova">
                     <div class="date-badge">
-                        <span class="date-day">08</span>
-                        <span class="date-month">Abr</span>
+                        <span class="date-day">03</span>
+                        <span class="date-month">Jun</span>
                     </div>
                     <div class="event-details">
-                        <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
-                        <h4 class="event-title">Estruturas Heterogêneas</h4>
-                        <p class="event-desc">Apresentação de slides e explicação teórica.</p>
+                        <div class="event-type-label"><i class="fa-solid fa-file-signature"></i> Pausa</div>
+                        <h4 class="event-title">Semana de Provas</h4>
+                        <p class="event-desc">Não há aula agendada.</p>
                     </div>
                 </div>
 
-                <div class="day-event type-pratica">
+                <div class="day-event type-prova">
                     <div class="date-badge">
-                        <span class="date-day">09</span>
-                        <span class="date-month">Abr</span>
+                        <span class="date-day">04</span>
+                        <span class="date-month">Jun</span>
                     </div>
                     <div class="event-details">
-                        <div class="event-type-label"><i class="fa-solid fa-laptop-code"></i> Prática</div>
-                        <h4 class="event-title">Estruturas Heterogêneas</h4>
-                        <p class="event-desc">Atividades práticas de programação.</p>
+                        <div class="event-type-label"><i class="fa-solid fa-file-signature"></i> Pausa</div>
+                        <h4 class="event-title">Semana de Provas</h4>
+                        <p class="event-desc">Não há aula agendada.</p>
                     </div>
                 </div>
             </div>
 
             <div class="week-card">
                 <h3 class="week-title"><i class="fa-regular fa-calendar-check"></i> Semana 5</h3>
-                
+
                 <div class="day-event type-teorica">
                     <div class="date-badge">
-                        <span class="date-day">15</span>
-                        <span class="date-month">Abr</span>
+                        <span class="date-day">10</span>
+                        <span class="date-month">Jun</span>
                     </div>
                     <div class="event-details">
                         <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
-                        <h4 class="event-title">Sub-Rotinas e Ponteiros</h4>
-                        <p class="event-desc">Apresentação de slides e explicação teórica.</p>
+                        <h4 class="event-title">Estruturas Homogêneas</h4>
+                        <p class="event-desc">Apresentação de slides e explicação teórica sobre vetores e matrizes.</p>
                     </div>
                 </div>
 
                 <div class="day-event type-pratica">
                     <div class="date-badge">
-                        <span class="date-day">16</span>
-                        <span class="date-month">Abr</span>
+                        <span class="date-day">11</span>
+                        <span class="date-month">Jun</span>
                     </div>
                     <div class="event-details">
                         <div class="event-type-label"><i class="fa-solid fa-laptop-code"></i> Prática</div>
-                        <h4 class="event-title">Sub-Rotinas e Ponteiros</h4>
-                        <p class="event-desc">Atividades práticas de programação.</p>
+                        <h4 class="event-title">Estruturas Homogêneas</h4>
+                        <p class="event-desc">Atividades práticas de programação envolvendo vetores e matrizes.</p>
                     </div>
                 </div>
             </div>
 
             <div class="week-card">
                 <h3 class="week-title"><i class="fa-regular fa-calendar-check"></i> Semana 6</h3>
-                
+
                 <div class="day-event type-teorica">
                     <div class="date-badge">
-                        <span class="date-day">22</span>
-                        <span class="date-month">Abr</span>
+                        <span class="date-day">17</span>
+                        <span class="date-month">Jun</span>
                     </div>
                     <div class="event-details">
                         <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
-                        <h4 class="event-title">Manipulação de Arquivos e Revisão</h4>
-                        <p class="event-desc">Apresentação de slides e explicação teórica.</p>
+                        <h4 class="event-title">Estruturas Heterogêneas</h4>
+                        <p class="event-desc">Apresentação de slides e explicação teórica sobre registros/structs.</p>
                     </div>
                 </div>
 
                 <div class="day-event type-pratica">
                     <div class="date-badge">
-                        <span class="date-day">23</span>
-                        <span class="date-month">Abr</span>
+                        <span class="date-day">18</span>
+                        <span class="date-month">Jun</span>
                     </div>
                     <div class="event-details">
                         <div class="event-type-label"><i class="fa-solid fa-laptop-code"></i> Prática</div>
-                        <h4 class="event-title">Manipulação de Arquivos e Revisão</h4>
-                        <p class="event-desc">Atividades práticas de programação e fechamento.</p>
+                        <h4 class="event-title">Estruturas Heterogêneas</h4>
+                        <p class="event-desc">Atividades práticas de programação utilizando registros.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="week-card">
+                <h3 class="week-title"><i class="fa-regular fa-calendar-check"></i> Semana 7</h3>
+
+                <div class="day-event type-teorica">
+                    <div class="date-badge">
+                        <span class="date-day">24</span>
+                        <span class="date-month">Jun</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
+                        <h4 class="event-title">Sub-Rotinas</h4>
+                        <p class="event-desc">Apresentação de slides e explicação teórica de funções e procedimentos.</p>
+                    </div>
+                </div>
+
+                <div class="day-event type-pratica">
+                    <div class="date-badge">
+                        <span class="date-day">25</span>
+                        <span class="date-month">Jun</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-laptop-code"></i> Prática</div>
+                        <h4 class="event-title">Sub-Rotinas</h4>
+                        <p class="event-desc">Atividades práticas utilizando funções e escopo de variáveis.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="week-card">
+                <h3 class="week-title"><i class="fa-regular fa-calendar-check"></i> Semana 8</h3>
+
+                <div class="day-event type-teorica">
+                    <div class="date-badge">
+                        <span class="date-day">01</span>
+                        <span class="date-month">Jul</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-chalkboard-user"></i> Conceitual</div>
+                        <h4 class="event-title">Ponteiros e Revisão Geral</h4>
+                        <p class="event-desc">Introdução aos ponteiros e revisão dos principais tópicos.</p>
+                    </div>
+                </div>
+
+                <div class="day-event type-pratica">
+                    <div class="date-badge">
+                        <span class="date-day">02</span>
+                        <span class="date-month">Jul</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-type-label"><i class="fa-solid fa-laptop-code"></i> Prática</div>
+                        <h4 class="event-title">Prática de Revisão</h4>
+                        <p class="event-desc">Atividades práticas de fechamento. (Última aula)</p>
                     </div>
                 </div>
             </div>
@@ -571,7 +599,7 @@
                     <a href="https://sites.google.com/view/programa-ampliar/in%C3%ADcio" class="info-link" target="_blank"><i class="fa-solid fa-graduation-cap"></i> Programa Ampliar</a>
                 </div>
             </div>
-            
+
             <div class="monitor-info">
                 <h4 style="color:var(--accent-light-blue); margin: 0 0 10px 0; font-size: 16px;">Thiago Kusal Silva</h4>
                 <a href="https://www.linkedin.com/in/tkusal/" class="info-link" target="_blank"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/tkusal</a>
@@ -584,7 +612,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             const filterBtns = document.querySelectorAll('.filter-btn');
             const events = document.querySelectorAll('.day-event');
 
@@ -612,13 +640,14 @@
             const today = new Date();
             const currentDay = today.getDate();
             const currentMonth = today.getMonth();
-            
-            const monthMap = { 'MAR': 2, 'ABR': 3 };
+
+            // Map atualizado com os novos meses do calendário
+            const monthMap = { 'MAI': 4, 'JUN': 5, 'JUL': 6 };
 
             events.forEach(event => {
                 const dayNode = event.querySelector('.date-day');
                 const monthNode = event.querySelector('.date-month');
-                
+
                 if (dayNode && monthNode) {
                     const eventDay = parseInt(dayNode.innerText, 10);
                     const eventMonthText = monthNode.innerText.trim().toUpperCase();
@@ -626,7 +655,7 @@
 
                     if (eventDay === currentDay && eventMonth === currentMonth) {
                         event.classList.add('today-highlight');
-                        
+
                         const badge = document.createElement('div');
                         badge.classList.add('today-badge');
                         badge.innerText = 'Hoje';
